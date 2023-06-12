@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "fix-sign-edit",
+	"version": "${version}",
+	"name": "Fix Sign Edit",
+	"description": "Edit signs only when sneaking and don't save changes by pressing ESC",
+	"authors": [
+		"brunohpaiva"
+	],
+	"contact": {
+		"homepage": "https://github.com/brunohpaiva/fix-sign-edit",
+		"sources": "https://github.com/brunohpaiva/fix-sign-edit"
+	},
+	"license": "MIT",
+	"icon": "assets/fix-sign-edit/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"codes.bruno.mod.fse.FixSignEditMod"
+		]
+	},
+	"mixins": [
+		"fix-sign-edit.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.21",
+		"minecraft": "~1.20",
+		"java": ">=17"
+	}
+}
