@@ -3,6 +3,7 @@
     "package": "codes.bruno.mod.bse.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "AbstractSignBlockMixin"
     ],
     "injectors": {
         "defaultRequire": 1

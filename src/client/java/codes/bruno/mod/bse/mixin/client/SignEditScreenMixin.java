@@ -25,7 +25,7 @@ public abstract class SignEditScreenMixin {
         method = "<init>(Lnet/minecraft/block/entity/SignBlockEntity;ZZLnet/minecraft/text/Text;)V",
         at = @At("TAIL")
     )
-    public void fse$init(SignBlockEntity blockEntity, boolean front, boolean filtered, Text title, CallbackInfo ci) {
+    public void bse$init(SignBlockEntity blockEntity, boolean front, boolean filtered, Text title, CallbackInfo ci) {
         initialMessages = Arrays.copyOf(messages, messages.length);
     }
 
@@ -36,7 +36,7 @@ public abstract class SignEditScreenMixin {
             target = "Lnet/minecraft/client/gui/screen/Screen;keyPressed(III)Z"
         )
     )
-    public void fse$keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
+    public void bse$keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
         if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
             System.arraycopy(initialMessages, 0, messages, 0, messages.length);
         }

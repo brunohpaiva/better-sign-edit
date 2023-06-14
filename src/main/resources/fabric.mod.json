@@ -15,6 +15,9 @@
     "icon": "assets/better-sign-edit/icon.png",
     "environment": "*",
     "entrypoints": {
+        "preLaunch": [
+            "codes.bruno.mod.bse.BetterSignEditMod"
+        ],
         "main": [
             "codes.bruno.mod.bse.BetterSignEditMod"
         ],
