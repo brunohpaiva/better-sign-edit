@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "preLaunch": [
-            "codes.bruno.mod.bse.BetterSignEditMod"
+            "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
         ],
         "main": [
             "codes.bruno.mod.bse.BetterSignEditMod"
