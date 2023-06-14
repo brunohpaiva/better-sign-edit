@@ -1,4 +1,4 @@
-package codes.bruno.mod.fse.mixin;
+package codes.bruno.mod.bse.mixin.client;
 
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;

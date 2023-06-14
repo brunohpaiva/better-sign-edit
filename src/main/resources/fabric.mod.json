@@ -1,30 +1,37 @@
 {
-	"schemaVersion": 1,
-	"id": "fix-sign-edit",
-	"version": "${version}",
-	"name": "Fix Sign Edit",
-	"description": "Edit signs only when sneaking and don't save changes by pressing ESC",
-	"authors": [
-		"brunohpaiva"
-	],
-	"contact": {
-		"homepage": "https://github.com/brunohpaiva/fix-sign-edit",
-		"sources": "https://github.com/brunohpaiva/fix-sign-edit"
-	},
-	"license": "MIT",
-	"icon": "assets/fix-sign-edit/icon.png",
-	"environment": "client",
-	"entrypoints": {
-		"client": [
-			"codes.bruno.mod.fse.FixSignEditMod"
-		]
-	},
-	"mixins": [
-		"fix-sign-edit.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.14.21",
-		"minecraft": "~1.20",
-		"java": ">=17"
-	}
+    "schemaVersion": 1,
+    "id": "better-sign-edit",
+    "version": "${version}",
+    "name": "Better Sign Edit",
+    "description": "Edit signs only when sneaking and don't save changes by pressing ESC",
+    "authors": [
+        "brunohpaiva"
+    ],
+    "contact": {
+        "homepage": "https://github.com/brunohpaiva/better-sign-edit",
+        "sources": "https://github.com/brunohpaiva/better-sign-edit"
+    },
+    "license": "MIT",
+    "icon": "assets/better-sign-edit/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "codes.bruno.mod.bse.BetterSignEditMod"
+        ],
+        "client": [
+            "codes.bruno.mod.bse.BetterSignEditModClient"
+        ]
+    },
+    "mixins": [
+        "better-sign-edit.mixins.json",
+        {
+            "config": "better-sign-edit.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.21",
+        "minecraft": "~1.20",
+        "java": ">=17"
+    }
 }

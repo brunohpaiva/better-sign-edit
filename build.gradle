@@ -19,8 +19,13 @@ repositories {
 }
 
 loom {
-	runs {
-		remove server
+	splitEnvironmentSourceSets()
+
+	mods {
+		"better-sign-edit" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
 	}
 }
 
