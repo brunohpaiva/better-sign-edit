@@ -18,7 +18,7 @@ import java.util.Arrays;
 @Mixin(AbstractSignEditScreen.class)
 public class SignEditScreenMixin {
 
-    private final ClientConfig clientConfig = ClientConfig.getInstance();
+    private static final ClientConfig clientConfig = ClientConfig.getInstance();
 
     @Shadow @Final private String[] messages;
 

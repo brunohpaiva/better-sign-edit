@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(AbstractSignBlock.class)
 public class AbstractSignBlockMixin {
 
-    private final ServerConfig serverConfig = ServerConfig.getInstance();
+    private static final ServerConfig serverConfig = ServerConfig.getInstance();
 
     @ModifyExpressionValue(
         method = "onUse",
