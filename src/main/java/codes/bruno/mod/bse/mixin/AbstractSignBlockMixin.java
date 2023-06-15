@@ -1,5 +1,6 @@
 package codes.bruno.mod.bse.mixin;
 
+import codes.bruno.mod.bse.config.ServerConfig;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.BlockState;
@@ -13,6 +14,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(AbstractSignBlock.class)
 public class AbstractSignBlockMixin {
+
+    private final ServerConfig serverConfig = ServerConfig.getInstance();
 
     @ModifyExpressionValue(
         method = "onUse",
@@ -30,7 +33,7 @@ public class AbstractSignBlockMixin {
         Hand hand,
         BlockHitResult hit
     ) {
-        return original && player.isSneaking();
+        return original && (!serverConfig.isRequireSneakToEdit() || player.isSneaking());
     }
 
 }

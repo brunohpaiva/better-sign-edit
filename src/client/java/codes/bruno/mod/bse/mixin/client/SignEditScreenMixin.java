@@ -1,5 +1,6 @@
 package codes.bruno.mod.bse.mixin.client;
 
+import codes.bruno.mod.bse.config.ClientConfig;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
 import net.minecraft.text.Text;
@@ -15,7 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Arrays;
 
 @Mixin(AbstractSignEditScreen.class)
-public abstract class SignEditScreenMixin {
+public class SignEditScreenMixin {
+
+    private final ClientConfig clientConfig = ClientConfig.getInstance();
 
     @Shadow @Final private String[] messages;
 
@@ -26,7 +29,9 @@ public abstract class SignEditScreenMixin {
         at = @At("TAIL")
     )
     public void bse$init(SignBlockEntity blockEntity, boolean front, boolean filtered, Text title, CallbackInfo ci) {
-        initialMessages = Arrays.copyOf(messages, messages.length);
+        if (!clientConfig.isSaveChangesWithEscape()) {
+            initialMessages = Arrays.copyOf(messages, messages.length);
+        }
     }
 
     @Inject(
@@ -37,7 +42,7 @@ public abstract class SignEditScreenMixin {
         )
     )
     public void bse$keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
-        if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
+        if (!clientConfig.isSaveChangesWithEscape() && keyCode == GLFW.GLFW_KEY_ESCAPE) {
             System.arraycopy(initialMessages, 0, messages, 0, messages.length);
         }
     }

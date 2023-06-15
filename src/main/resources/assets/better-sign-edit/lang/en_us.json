@@ -1,0 +1,5 @@
+{
+    "text.better-sign-edit.config.title": "Better Sign Edit Options",
+    "text.better-sign-edit.config.option.requireSneakToEdit": "Require SNEAK to edit signs",
+    "text.better-sign-edit.config.option.saveChangesWithEscape": "Save changes with ESCAPE key"
+}

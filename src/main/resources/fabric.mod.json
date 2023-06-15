@@ -9,7 +9,8 @@
     ],
     "contact": {
         "homepage": "https://github.com/brunohpaiva/better-sign-edit",
-        "sources": "https://github.com/brunohpaiva/better-sign-edit"
+        "sources": "https://github.com/brunohpaiva/better-sign-edit",
+        "issues": "https://github.com/brunohpaiva/better-sign-edit/issues"
     },
     "license": "MIT",
     "icon": "assets/better-sign-edit/icon.png",
@@ -23,6 +24,9 @@
         ],
         "client": [
             "codes.bruno.mod.bse.BetterSignEditModClient"
+        ],
+        "modmenu": [
+            "codes.bruno.mod.bse.BetterSignEditModMenuApiImpl"
         ]
     },
     "mixins": [
@@ -36,5 +40,9 @@
         "fabricloader": ">=0.14.21",
         "minecraft": "~1.20",
         "java": ">=17"
+    },
+    "recommends": {
+        "modmenu": ">=${modmenu_version}",
+        "cloth-config": ">=${cloth_config_version}"
     }
 }
