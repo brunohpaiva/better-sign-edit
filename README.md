@@ -13,7 +13,7 @@ This mod fixes that, by only letting you edit the sign when sneaking, and it als
 
 ## Download
 
-You can get the mod on [Modrinth](https://modrinth.com/mod/better-sign-edit).
+You can get the mod on [Modrinth](https://modrinth.com/mod/better-sign-edit) and [CurseForge](https://www.curseforge.com/minecraft/mc-mods/better-sign-edit).
 
 ## License
 
