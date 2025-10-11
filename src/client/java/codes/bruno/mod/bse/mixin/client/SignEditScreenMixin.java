@@ -3,6 +3,7 @@ package codes.bruno.mod.bse.mixin.client;
 import codes.bruno.mod.bse.config.ClientConfig;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
+import net.minecraft.client.input.KeyInput;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
@@ -38,11 +39,11 @@ public class SignEditScreenMixin {
         method = "keyPressed",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/screen/Screen;keyPressed(III)Z"
+            target = "Lnet/minecraft/client/gui/screen/Screen;keyPressed(Lnet/minecraft/client/input/KeyInput;)Z"
         )
     )
-    public void bse$keyPressed(int keyCode, int scanCode, int modifiers, CallbackInfoReturnable<Boolean> cir) {
-        if (!clientConfig.isSaveChangesWithEscape() && keyCode == GLFW.GLFW_KEY_ESCAPE) {
+    public void bse$keyPressed(KeyInput input, CallbackInfoReturnable<Boolean> cir) {
+        if (!clientConfig.isSaveChangesWithEscape() && input.key() == GLFW.GLFW_KEY_ESCAPE) {
             System.arraycopy(initialMessages, 0, messages, 0, messages.length);
         }
     }
