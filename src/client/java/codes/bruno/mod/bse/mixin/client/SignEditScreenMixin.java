@@ -1,10 +1,10 @@
 package codes.bruno.mod.bse.mixin.client;
 
 import codes.bruno.mod.bse.config.ClientConfig;
-import net.minecraft.block.entity.SignBlockEntity;
-import net.minecraft.client.gui.screen.ingame.AbstractSignEditScreen;
-import net.minecraft.client.input.KeyInput;
-import net.minecraft.text.Text;
+import net.minecraft.client.gui.screens.inventory.AbstractSignEditScreen;
+import net.minecraft.client.input.KeyEvent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,10 +26,10 @@ public class SignEditScreenMixin {
     private String[] initialMessages;
 
     @Inject(
-        method = "<init>(Lnet/minecraft/block/entity/SignBlockEntity;ZZLnet/minecraft/text/Text;)V",
+        method = "<init>(Lnet/minecraft/world/level/block/entity/SignBlockEntity;ZZLnet/minecraft/network/chat/Component;)V",
         at = @At("TAIL")
     )
-    public void bse$init(SignBlockEntity blockEntity, boolean front, boolean filtered, Text title, CallbackInfo ci) {
+    public void bse$init(SignBlockEntity blockEntity, boolean front, boolean filtered, Component title, CallbackInfo ci) {
         if (!clientConfig.isSaveChangesWithEscape()) {
             initialMessages = Arrays.copyOf(messages, messages.length);
         }
@@ -39,10 +39,10 @@ public class SignEditScreenMixin {
         method = "keyPressed",
         at = @At(
             value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/screen/Screen;keyPressed(Lnet/minecraft/client/input/KeyInput;)Z"
+            target = "Lnet/minecraft/client/gui/screens/Screen;keyPressed(Lnet/minecraft/client/input/KeyEvent;)Z"
         )
     )
-    public void bse$keyPressed(KeyInput input, CallbackInfoReturnable<Boolean> cir) {
+    public void bse$keyPressed(KeyEvent input, CallbackInfoReturnable<Boolean> cir) {
         if (!clientConfig.isSaveChangesWithEscape() && input.key() == GLFW.GLFW_KEY_ESCAPE) {
             System.arraycopy(initialMessages, 0, messages, 0, messages.length);
         }

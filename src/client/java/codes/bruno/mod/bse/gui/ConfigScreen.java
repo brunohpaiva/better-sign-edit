@@ -3,8 +3,8 @@ package codes.bruno.mod.bse.gui;
 import codes.bruno.mod.bse.BetterSignEditModClient;
 import codes.bruno.mod.bse.config.ClientConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.Text;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 
 import java.io.IOException;
 
@@ -15,15 +15,15 @@ public class ConfigScreen {
 
         var builder = ConfigBuilder.create()
             .setParentScreen(parent)
-            .setTitle(Text.translatable("text.better-sign-edit.config.title"));
+            .setTitle(Component.translatable("text.better-sign-edit.config.title"));
 
         var entryBuilder = builder.entryBuilder();
 
-        var generalCategory = builder.getOrCreateCategory(Text.of("General"));
+        var generalCategory = builder.getOrCreateCategory(Component.literal("General"));
 
         generalCategory.addEntry(
             entryBuilder.startBooleanToggle(
-                    Text.translatable("text.better-sign-edit.config.option.saveChangesWithEscape"),
+                    Component.translatable("text.better-sign-edit.config.option.saveChangesWithEscape"),
                     clientConfig.isSaveChangesWithEscape()
                 )
                 .setDefaultValue(false)
