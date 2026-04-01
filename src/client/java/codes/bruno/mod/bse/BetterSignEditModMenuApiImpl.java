@@ -9,12 +9,10 @@ public class BetterSignEditModMenuApiImpl implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> null;
-        // TODO: Uncomment when Cloth Config adds MC 26.1 support
-//        return parent -> {
-//            var isClothConfigInstalled = FabricLoader.getInstance().isModLoaded("cloth-config");
-//
-//            return isClothConfigInstalled ? ConfigScreen.create(parent) : null;
-//        };
+        return parent -> {
+            var isClothConfigInstalled = FabricLoader.getInstance().isModLoaded("cloth-config");
+
+            return isClothConfigInstalled ? ConfigScreen.create(parent) : null;
+        };
     }
 }

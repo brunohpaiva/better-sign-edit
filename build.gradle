@@ -40,10 +40,9 @@ dependencies {
 
     implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 
-    // TODO: Uncomment when Cloth Config adds MC 26.1 support
-//    api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-//        exclude(group: "net.fabricmc.fabric-api")
-//    }
+    api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
 
     // Mod Menu requires fabric-api in MC >= 1.20.3. Only for development
     runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
